@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="VcsDirectoryMappings">
-    <mapping directory="$PROJECT_DIR$/react-simple-todo-app" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/open-id-client-serverless" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/react-simple-todo-app" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/src/todo-app-serverless" vcs="Git" />
-  </component>
-</project>

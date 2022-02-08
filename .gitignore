@@ -1,6 +1,8 @@
 src
 !src/.gitkeep
 builds
+.idea
+.vscode
 
 # Local .terraform directories
 **/.terraform/*
