@@ -14,10 +14,6 @@ output "dynamo_arn" {
   value = aws_dynamodb_table.create_dynamodb_table.arn
 }
 
-output "lambda_invoke" {
-  value = module.create_backend_lambda.lambda_function_invoke_arn
-}
-
-output "lambda_arn" {
+output "backend_lambda_arn" {
   value = module.create_backend_lambda.lambda_function_arn
 }

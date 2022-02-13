@@ -40,3 +40,4 @@ override.tf.json
 .terraformrc
 terraform.rc
 env.json
+test/env.json
