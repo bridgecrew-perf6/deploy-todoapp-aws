@@ -5,11 +5,11 @@ resource "aws_apigatewayv2_authorizer" "openid_authorizer" {
   name             = "IDP"
 
   jwt_configuration {
-    audience = var.openid.AUDIENCES
-    issuer   = var.openid.IDP_METADATA_URL
+    audience = var.openid_config.AUDIENCES
+    issuer   = var.openid_config.IDP_METADATA_URL
   }
 
-  provider = aws.eu-south-1
+  provider = aws.default
 
 }
 
@@ -36,6 +36,6 @@ module "api_gateway" {
   }
 
   providers = {
-    aws : aws.eu-south-1
+    aws : aws.default
   }
 }

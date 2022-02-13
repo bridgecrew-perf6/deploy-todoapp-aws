@@ -1,7 +1,7 @@
 resource "aws_iam_policy" "create_dynamodb_policy" {
   name   = aws_dynamodb_table.create_dynamodb_table.id
 
-  provider = aws.eu-south-1
+  provider = aws.default
 
   policy = <<EOF
 {
@@ -49,7 +49,7 @@ module "create_role_lambda" {
 
   create_role = true
 
-  role_name         = "todoapp-lambda-role"
+  role_name         = "${var.name_prefix}-lambda-role"
   role_requires_mfa = false
 
   custom_role_policy_arns = [

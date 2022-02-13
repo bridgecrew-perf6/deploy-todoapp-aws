@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "create_bucket_s3" {
-  bucket = "todoapp-s3"
+  bucket = "${var.name_prefix}-s3"
   acl    = "public-read"
   policy = <<EOF
   {
@@ -10,13 +10,13 @@ resource "aws_s3_bucket" "create_bucket_s3" {
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::todoapp-s3/*"
+      "Resource": "arn:aws:s3:::${var.name_prefix}-s3/*"
     }
   ]
 }
 EOF
 
-  provider = aws.eu-south-1
+  provider = aws.default
 
   website {
     index_document = "index.html"
@@ -25,7 +25,7 @@ EOF
 }
 
 locals {
-  website_files = fileset(var.website_root, "**")
+  website_files = fileset(var.website_path, "**")
 
   mime_types = jsondecode(file("mime.json"))
 }
@@ -34,12 +34,12 @@ resource "aws_s3_bucket_object" "upload_static_files_s3" {
 
   for_each = local.website_files
 
-  provider = aws.eu-south-1
+  provider = aws.default
 
   bucket       = aws_s3_bucket.create_bucket_s3.id
   key          = each.key
-  source       = "${var.website_root}/${each.key}"
-  source_hash  = filesha256("${var.website_root}/${each.key}")
+  source       = "${var.website_path}/${each.key}"
+  source_hash  = filesha256("${var.website_path}/${each.key}")
   acl          = "public-read"
   content_type = lookup(local.mime_types, regex("\\.[^.]+$", each.key), null)
 }

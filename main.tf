@@ -16,9 +16,9 @@ provider "aws" {
 }
 
 provider "aws" {
-  alias = "eu-south-1"
+  alias = "default"
 
-  region = "eu-south-1"
+  region = var.region
 
   shared_credentials_file = var.shared_credentials_file
 }

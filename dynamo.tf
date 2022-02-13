@@ -1,7 +1,7 @@
 resource "aws_dynamodb_table" "create_dynamodb_table" {
-  name = "todo-app-dynamo"
+  name = "${var.name_prefix}-dynamo"
 
-  provider = aws.eu-south-1
+  provider = aws.default
 
   billing_mode   = "PROVISIONED"
   read_capacity  = 20

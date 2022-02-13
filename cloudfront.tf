@@ -31,7 +31,7 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
 
     custom_header {
       name  = "IDP_METADATA_URL"
-      value = var.openid.IDP_METADATA_URL
+      value = var.openid_config.IDP_METADATA_URL
     }
 
     custom_header {
@@ -41,12 +41,12 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
 
     custom_header {
       name  = "CLIENT_ID"
-      value = var.openid.CLIENT_ID
+      value = var.openid_config.CLIENT_ID
     }
 
     custom_header {
       name  = "CLIENT_SECRET"
-      value = var.openid.CLIENT_SECRET
+      value = var.openid_config.CLIENT_SECRET
     }
   }
 
@@ -82,7 +82,7 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
     allowed_methods        = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods         = ["HEAD", "GET"]
     path_pattern           = "/api/*"
-    target_origin_id       = "todoapp-backend-api"
+    target_origin_id       = "${var.name_prefix}-backend-api"
     viewer_protocol_policy = "redirect-to-https"
 
     default_ttl = 0
