@@ -6,7 +6,7 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
 
   origin {
     domain_name = replace(module.api_gateway.apigatewayv2_api_api_endpoint, "/^https?:\\/\\//", "")
-    origin_id   = "todoapp-backend-api"
+    origin_id   = "${var.name_prefix}-backend-api"
     origin_path = ""
 
     custom_origin_config {
@@ -19,7 +19,7 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
 
   origin {
     domain_name = aws_s3_bucket.create_bucket_s3.website_endpoint
-    origin_id   = aws_s3_bucket.create_bucket_s3.bucket
+    origin_id   = "${var.name_prefix}-s3-spa"
     origin_path = ""
 
     custom_origin_config {
