@@ -1,7 +1,7 @@
 #!/bin/bash
 rm -fr src/react-simple-todo-app;
 rm -fr src/open-id-client-serverless;
-rm -fr src/open-id-client-serverless;
+rm -fr src/todo-app-serverless;
 
 mkdir -p src
 cd src

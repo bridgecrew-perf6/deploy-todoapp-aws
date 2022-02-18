@@ -53,7 +53,7 @@ resource "aws_cloudfront_distribution" "create_cloudfront_distribution" {
   default_cache_behavior {
     allowed_methods        = ["HEAD", "DELETE", "POST", "GET", "OPTIONS", "PUT", "PATCH"]
     cached_methods         = ["HEAD", "GET"]
-    target_origin_id       = aws_s3_bucket.create_bucket_s3.bucket
+    target_origin_id       = "${var.name_prefix}-s3-spa"
     viewer_protocol_policy = "redirect-to-https"
 
     default_ttl = 0

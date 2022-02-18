@@ -28,6 +28,7 @@ module "create_backend_lambda" {
 
   environment_variables = {
     TASK_TABLE : aws_dynamodb_table.create_dynamodb_table.id
+    BASE_PATH: "/api/v1"
   }
   providers = {
     aws : aws.default

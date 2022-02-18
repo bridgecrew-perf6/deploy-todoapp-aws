@@ -27,7 +27,7 @@ module "api_gateway" {
 
   integrations = {
     "ANY /api/v1/{proxy+}" = {
-      lambda_arn             = "${module.create_backend_lambda.lambda_function_arn}:${module.create_backend_lambda.lambda_function_version}"
+      lambda_arn             = module.create_backend_lambda.lambda_function_arn
       payload_format_version = "2.0"
       timeout_milliseconds   = 12000
       authorization_type     = "JWT"
